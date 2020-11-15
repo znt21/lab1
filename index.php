@@ -1,43 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Список дел</title>
-	<link rel='stylesheet' type='text/css' href='css/main.css'/>
-</head>
+	<!DOCTYPE html>
+	<html lnag="ru">
+	<head>
+		<meta  charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta hhtp-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="css/s.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<title>PHP веб сайт</title>
+	</head>
 <body>
-	<div class="container">
-		<div class="tasks-wrap">
-		<?php
-			$file = file_get_contents('data/data.json');
-			if($file != false) {
-                $arr = json_decode($file,true);
-                if($arr != false && $arr != NULL) {
-    
-                	$length = count($arr);
-            	
-                	if($length > 0) {
-                		for($i = 0;$i < $length;$i++) {
-                			if($arr[$i]['done'] == false) {
-                			    echo "<div class='tasks'>".($i+1).". <div class='tasks-text-wrap'>".$arr[$i]['text']."</div><a class='mark-btn' href='php/mark.php?id=".$arr[$i]['id']."'></a><a class='delete-btn' href='php/delete.php?id=".$arr[$i]['id']."'></a></div>";
-                		    } else {
-                		    	echo "<div class='tasks'>".($i+1).". <div class='tasks-text-wrap'>".$arr[$i]['text']."</div><div class='marked-btn'></div><a class='delete-btn' href='php/delete.php?id=".$arr[$i]['id']."'></a></div>";
-                		    }
-                		}
-                	} else {
-                		echo "У вас пока нет ни одной записи.";
-                	}
-                } else {
-                	echo "Can not decode json!";
-                }
-            } else {
-            	echo "Can not read file!";
-            }
-        ?>
-        </div>
-        <form class="send-form-wrap" method="POST" action="php/add.php">
-        	<textarea class="send-textarea" placeholder="Напишите дело..." type="textarea" name="add_text"></textarea>
-        	<input class="send-btn" type="submit" value="Добавить"/>
-        </form>
-	</div>
+<?php require "blocks/header.php" ?>
+<div class="container mt-5">
+	<h3 class="mb-5">ff</h3>
+	<div class="d-flex flex-wrap">
+	<?php
+			for ($i = 0; $i < 5; $i++):
+		?>
+		<div class="card mb-4 shadow-sm">
+			<div class="card-header">
+				<h4 class="my-0 font-weight-normal">Название</h4>
+			</div>
+			<div class="card-body">  
+				<ul class="list-unstyled mt-3 mb-4">
+					<li>123</li>
+					<li>345</li>
+					<li>678</li>
+					<li>90
+					</li>
+				</ul>
+				<button type="button" class="btn btn-lg btn-block btn-outline-primary">Подробнее</button>
+			</div>
+		</div>
+	<?php endfor; ?>	
+	</div>	
+</div>
+<?php require "blocks/footer.php"?>
 </body>
 </html>
